@@ -1,0 +1,66 @@
+[gd_scene load_steps=10 format=3 uid="uid://cnxja4nr7g6tg"]
+
+[ext_resource type="Script" uid="uid://bm0jmen6816vs" path="res://scenes/mob.gd" id="1_ebxvl"]
+[ext_resource type="Texture2D" uid="uid://csvmrfjprtdj" path="res://art/enemyFlyingAlt_1.png" id="1_h8ps3"]
+[ext_resource type="Texture2D" uid="uid://bex7jwh1vn7dl" path="res://art/enemyFlyingAlt_2.png" id="2_ebxvl"]
+[ext_resource type="Texture2D" uid="uid://btrqwy3rwwd6u" path="res://art/enemySwimming_1.png" id="3_wpivu"]
+[ext_resource type="Texture2D" uid="uid://ggn0j7ksnqcv" path="res://art/enemySwimming_2.png" id="4_nao87"]
+[ext_resource type="Texture2D" uid="uid://fo61qquv0grv" path="res://art/enemyWalking_1.png" id="5_i71wu"]
+[ext_resource type="Texture2D" uid="uid://bybwku2se8w2f" path="res://art/enemyWalking_2.png" id="6_m0xve"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_m0elm"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_h8ps3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_ebxvl")
+}],
+"loop": true,
+"name": &"fly",
+"speed": 3.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_wpivu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_nao87")
+}],
+"loop": true,
+"name": &"swim",
+"speed": 3.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_i71wu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_m0xve")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 3.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_h8ps3"]
+radius = 36.0
+height = 98.0
+
+[node name="Mob" type="RigidBody2D"]
+collision_mask = 0
+gravity_scale = 0.0
+script = ExtResource("1_ebxvl")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.75, 0.75)
+sprite_frames = SubResource("SpriteFrames_m0elm")
+animation = &"swim"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1, 0)
+rotation = 1.57307
+shape = SubResource("CapsuleShape2D_h8ps3")
+
+[node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="."]
