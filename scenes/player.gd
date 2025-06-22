@@ -14,14 +14,14 @@ func _process(delta: float) -> void:
 	# We need to set the velocity to 0,0 as the start of the frame 
 	var velocity = Vector2.ZERO 
 	
-	if Input.is_action_just_pressed("move_right"):
-		velocity.x += 1
-	if Input.is_action_just_pressed("move_left"):
-		velocity.x -= 1
-	if Input.is_action_just_pressed("move_up"):
-		velocity.y -= 1
-	if Input.is_action_just_pressed("move_down"):
-		velocity.y += 1
+	if Input.is_action_pressed("move_right"):
+		velocity.x += 10
+	if Input.is_action_pressed("move_left"):
+		velocity.x -= 10
+	if Input.is_action_pressed("move_up"):
+		velocity.y -= 10
+	if Input.is_action_pressed("move_down"):
+		velocity.y += 10
 	
 	#We always need to normalize the movement 
 	if velocity.length() > 0:
